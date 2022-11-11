@@ -11,11 +11,17 @@ public class MergeSort {
         }
         int mid = array.size() / 2;
         var left = split(array.subList(0, mid));
-        var right =split(array.subList(mid, array.size()));
-        return merge(left, right);
+        System.out.println("splited left: " + left);
+        var right = split(array.subList(mid, array.size()));
+        System.out.println("splited right: " + right);
+        var data = merge(left, right);
+        System.out.println("merged data: " + data);
+        return data;
     }
 
     static List<Integer> merge(List<Integer> left, List<Integer> right) {
+        System.out.println("merge left: " + left);
+        System.out.println("merge right: " + right);
         ArrayList<Integer> sortedArr = new ArrayList<>();
         int leftPoint = 0;
         int rightPoint = 0;
@@ -53,7 +59,7 @@ public class MergeSort {
         for(int i = 0; i < 5; i++) {
             testDatas.add((int) (Math.random() * 100));
         }
-
+        System.out.println(testDatas);
         System.out.println(MergeSort.split(testDatas));
     }
 
