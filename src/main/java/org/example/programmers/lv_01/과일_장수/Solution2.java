@@ -25,7 +25,6 @@ public class Solution2 {
     public static void main(String[] args) {
         Solution2 solution = new Solution2();
 //        var result = solution.solution(3,4, new int[]{1, 2, 3, 1, 2, 3, 1});
-
         var result = solution.solution(4,3, new int[]{4, 1, 2, 2, 4, 4, 4, 4, 1, 2, 4, 2});
         System.out.println("result: " + result);
     }
