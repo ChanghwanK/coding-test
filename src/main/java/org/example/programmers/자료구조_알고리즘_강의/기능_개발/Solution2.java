@@ -1,40 +1,45 @@
 package org.example.programmers.자료구조_알고리즘_강의.기능_개발;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
-public class Solution {
+public class Solution2 {
     public int[] solution(int[] progresses, int[] speeds) {
-        //[93, 30, 55], [1, 30, 5]
         int[] answer = {};
-        Queue<Integer> queue = new LinkedList<>();
+        // 93, 30, 55 | 1, 30, 5
+        // 7, 3, 9
+        // 7일 뒤에 7,3 배포 가능 2
+        // 남은 것 배포 1
 
-        // 배포 가능한 날짜 구하기
+        // 100 - 93 / speed
+        Queue<Integer> needDays = new LinkedList<>();
+
         for(int i = 0; i < progresses.length; i++) {
             float p = progresses[i];
             float s = speeds[i];
-            int day = (int) ((100 - p) / s);
-            queue.offer(day);
+            int needDay = (int) Math.ceil((100 - p) / s);
+            needDays.offer(needDay);
         }
-
-        // [7,2,9]
+        System.out.println(needDays);
+        // 앞의 숫자 보다 작다면 배포 가능
         Queue<Integer> answers = new LinkedList<>();
-        int d = queue.poll();
         int releaseCnt = 1;
-        while(!queue.isEmpty()) {
-            int n = queue.poll();
+        int firstJobNeedDay = needDays.poll();
+        while(!needDays.isEmpty()) {
+            int nextNeedDay = needDays.poll();
 
-            if(d >= n) {
+            if (firstJobNeedDay >= nextNeedDay) {
                 releaseCnt++;
                 continue;
             }
 
             answers.offer(releaseCnt);
             releaseCnt = 1;
-            d = n;
+            firstJobNeedDay = nextNeedDay;
         }
-
         answers.offer(releaseCnt);
 
         return answers.stream().mapToInt(Integer::intValue).toArray();
@@ -43,7 +48,7 @@ public class Solution {
     public static void main(String [] args) {
         int [] progresses = new int[] {93, 30, 55};
         int [] speeds = new int[] {1, 30, 5};
-        Solution solution = new Solution();
+        Solution2 solution = new Solution2();
         var result = solution.solution(progresses, speeds);
         System.out.println("result: " + Arrays.toString(result));
     }
