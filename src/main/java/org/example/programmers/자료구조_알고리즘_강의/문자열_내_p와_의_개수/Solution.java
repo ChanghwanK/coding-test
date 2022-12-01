@@ -19,9 +19,6 @@ public class Solution {
                 yCnt++;
             }
         }
-        System.out.println(pCnt);
-        System.out.println(yCnt);
-
         return pCnt == yCnt;
     }
 
