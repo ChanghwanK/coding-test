@@ -15,7 +15,7 @@ public class Solution {
 
 
         List<Integer> keyList = new ArrayList<>(map.keySet());
-        keyList.sort((o1, o2) -> map.get(o2) - map.get(o1));
+        keyList.sort(((o1, o2) -> map.get(o2) - map.get(o1)));
 
         for(Integer key : keyList) {
             if (k <= 0)
@@ -30,7 +30,7 @@ public class Solution {
     public static void main(String [] args) {
         Solution solution = new Solution();
 //        var result = solution.solution(6, new int[] {1, 3, 2, 5, 4, 5, 2, 3});
-        var result = solution.solution(4, new int[] {1, 3, 2, 5, 4, 5, 2, 3});
+        var result = solution.solution(2, new int[] {1, 3, 2, 5, 4, 5, 2, 3});
         System.out.println("result: " + result);
     }
 }
