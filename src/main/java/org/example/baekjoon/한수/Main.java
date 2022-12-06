@@ -8,45 +8,38 @@ import java.util.Queue;
 import java.util.Scanner;
 
 public class Main {
-    static int X;
-    static int cnt = 0;
+
     public static void main(String[] args) {
-        input();
-        solve();
-        System.out.println(cnt);
+        Scanner in = new Scanner(System.in);
+
+        System.out.print(arithmetic_sequence(in.nextInt()));
+        in.close();
+
+
     }
 
-    static void solve() {
-        for(int i = 1; i <= X; i++) if(isHanSu(i)) cnt++;
-    }
+    public static int arithmetic_sequence(int num) {
+        int cnt = 0; // 한수 카운팅
 
-    static boolean isHanSu(int i) {
-        // i의 각 자리수가 등차수열을 이루는지
-        // 공비 찾기
-        if(i >= 1 && i < 100) return true;
-
-        List<Integer> arr = new ArrayList<>();
-        while(i != 0) {
-            arr.add(i % 10);
-            i /= 10;
+        if (num < 100) {
+            return num;
         }
-        arr.sort(Collections.reverseOrder());
-        System.out.println("arr: " + arr);
 
-        // 3 2 1
-        for(int j = 0; j < arr.size(); j++) {
-            for(int k = j + 1; k < arr.size(); k++) {
-                int a = arr.get(i);
-                int b = arr.get(j);
+        else {
+            cnt = 99;
+
+            for (int i = 100; i <= num; i++) {
+                int hun = i / 100; // 백의 자릿수
+                int ten = (i / 10) % 10; // 십의 자릿수
+                int one = i % 10;
+
+                if ((hun - ten) == (ten - one)) { // 각 자릿수가 수열을 이루면
+                    cnt++;
+                }
             }
         }
 
-        return false;
-    }
-
-    static void input() {
-        Scanner sc = new Scanner(System.in);
-        X = sc.nextInt();
+        return cnt;
     }
 
 }
