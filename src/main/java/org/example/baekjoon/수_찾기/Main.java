@@ -4,47 +4,42 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
-    static int n, m;
+    static int N, M;
     static int [] arr1;
     static int [] arr2;
-    public static void main(String[] args) {
+
+    static void input() {
         Scanner sc = new Scanner(System.in);
-        n = sc.nextInt();
-        arr1 = new int[n];
+        N = sc.nextInt();
+        arr1 = new int[N];
+        for(int i = 0; i < N; i++) arr1[i] = sc.nextInt();
 
-        for(int i = 0; i < n; i++) {
-            arr1[i] = sc.nextInt();
-        }
-
-        m = sc.nextInt();
-        arr2 = new int[m];
-        for(int i = 0; i < m; i++) {
-            arr2[i] = sc.nextInt();
-        }
-
-
-        // arr2의 요소가 arr1에 있는지
-        // 출력은 m 길이만큼
-
-        Arrays.sort(arr1);
-
-        for(int i = 0; i < m; i++) {
-            // 결과가 있다면 1 없다면 0
-            System.out.println(isExist(arr2[i]));
-        }
+        M = sc.nextInt();
+        arr2 = new int[M];
+        for(int i = 0; i < N; i++) arr2[i] = sc.nextInt();
     }
 
-    public static int isExist(int num) {
-        // 탐색 범위를 줄여가며 찾을 것임
+    static boolean binSearch(int num) {
+        int start = 0;
+        int end = arr1.length - 1;
+        int mid;
+        while(start <= end) {
+            mid = (start + end) / 2;
+            if(arr1[mid] == num) return true;
+            else if(num > mid) start = mid + 1;
+            else end = mid -1;
+        }
+        return false;
+    }
 
-//        if (num > mid) {
-//            // mid 부터 끝까지 탐색
-//        } else {
-//
-//        }
-//
-//        System.out.println(max);
+    public static void main(String[] args) {
+        input();
+        Arrays.sort(arr1);
 
-        return 0;
+        for(int a : arr2)
+            if(binSearch(a))
+                System.out.println(1);
+            else
+                System.out.println(0);
     }
 }
