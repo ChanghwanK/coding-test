@@ -31,7 +31,6 @@ public class Solution {
             if (requestedBabbling.equals("..")) answer++;
             if (requestedBabbling.equals("...")) answer++;
             if (requestedBabbling.equals("....")) answer++;
-
         }
 
         return answer;

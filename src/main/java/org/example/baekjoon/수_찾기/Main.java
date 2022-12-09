@@ -16,7 +16,7 @@ public class Main {
 
         M = sc.nextInt();
         arr2 = new int[M];
-        for(int i = 0; i < N; i++) arr2[i] = sc.nextInt();
+        for(int i = 0; i < M; i++) arr2[i] = sc.nextInt();
     }
 
     static boolean binSearch(int num) {
@@ -26,7 +26,7 @@ public class Main {
         while(start <= end) {
             mid = (start + end) / 2;
             if(arr1[mid] == num) return true;
-            else if(num > mid) start = mid + 1;
+            else if(num > arr1[mid]) start = mid + 1;
             else end = mid -1;
         }
         return false;
