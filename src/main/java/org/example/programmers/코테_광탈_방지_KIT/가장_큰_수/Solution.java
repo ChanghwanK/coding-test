@@ -1,9 +1,6 @@
 package org.example.programmers.코테_광탈_방지_KIT.가장_큰_수;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class Solution {
     public String solution(int[] numbers) {
@@ -14,14 +11,13 @@ public class Solution {
             strNums[i] = String.valueOf(numbers[i]);
         }
 
-        System.out.println(Arrays.toString(strNums));
-
         Arrays.sort(
             strNums, (s1, s2) -> (s2 + s1).compareTo(s1 + s2)
         );
 
-        System.out.println(Arrays.toString(strNums));
-        return "";
+        if (String.join("", strNums).startsWith("0")) return "0";
+
+        return String.join("", strNums);
     }
 
     public static void main(String [] args) {

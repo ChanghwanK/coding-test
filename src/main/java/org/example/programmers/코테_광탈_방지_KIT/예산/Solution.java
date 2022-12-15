@@ -17,8 +17,7 @@ public class Solution {
             int total = 0;
 
             for(int budget : budgets) {
-                if (budget > mid) total += mid;
-                else total += budget;
+                total += Math.min(budget, mid);
             }
 
             if (total <= M) {
