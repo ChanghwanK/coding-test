@@ -17,8 +17,8 @@ public class Factorial {
 
     public static void main(String[] args) {
         input();
-        int result = recursive(N);
-        System.out.println("result: " + result);
+//        int result = recursive(N);
+//        System.out.println("result: " + result);
     }
 
 }
