@@ -1,7 +1,5 @@
 package org.example.baekjoon.N과M_3;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -28,8 +26,8 @@ public class Main {
         } else {
             // 더 찾기
             for(int i = 1; i <= N; i++) {
+                // 한 번 호출 될 때 숫자 하나씩을 고름
                 selected[k] = i;
-                System.out.println(Arrays.toString(selected));
                 solve(k + 1);
             }
         }
@@ -37,8 +35,7 @@ public class Main {
 
     public static void main(String[] args) {
         input();
-
-        System.out.println("init: " + Arrays.toString(selected));
+//        System.out.println("init: " + Arrays.toString(selected));
         solve(1);
         System.out.println(sb.toString());
     }

@@ -4,6 +4,13 @@ package org.example.algorithm;
  * 유클리드 호제법
  */
 public class EuclideanAlgorithm {
+
+    int gcdR(int a, int b) {
+        if (a % b == 0) return b;
+        else return gcd(b, a % b);
+    }
+
+
     static int recursiveGCD(int a, int b) {
         if (b == 0) {
             return a;
