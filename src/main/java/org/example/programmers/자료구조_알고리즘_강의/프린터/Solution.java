@@ -28,7 +28,6 @@ public class Solution {
             for(Paper p : queue) {
                 if(p.priority > now.priority) {
                     printable = false;
-                    continue;
                 }
             }
 
