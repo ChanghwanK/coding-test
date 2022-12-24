@@ -6,37 +6,32 @@ public class Main {
     static int N, M;
     static int [] selected;
     static StringBuilder sb = new StringBuilder();
-    static void input() {
+
+    static void dfs(int index) {
+        if (index == M + 1) {
+            for(int i = 1; i < selected.length; i++) {
+                sb.append(selected[i]).append(" ");
+            }
+            sb.append("\n");
+            return;
+        }
+
+        for(int i = 1; i <= N; i++) {
+            selected[index] = i;
+            dfs(index + 1);
+        }
+    }
+
+    // N까지 숫자 중 M개를 선택 중복 허용
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         N = sc.nextInt();
         M = sc.nextInt();
 
         selected = new int[M + 1];
-    }
 
-    // 1부터 N까지 자연수 중에서 M개를 고른 수열
-    // 같은 숫자 중복 가능
-    static void solve(int k) {
-        if (k == M + 1) {
-            // 다고름 출력해주기
-            for(int i = 1; i <= M; i++) {
-                sb.append(selected[i]).append(' ');
-            }
-            sb.append('\n');
-        } else {
-            // 더 찾기
-            for(int i = 1; i <= N; i++) {
-                // 한 번 호출 될 때 숫자 하나씩을 고름
-                selected[k] = i;
-                solve(k + 1);
-            }
-        }
-    }
+        dfs(1);
 
-    public static void main(String[] args) {
-        input();
-//        System.out.println("init: " + Arrays.toString(selected));
-        solve(1);
-        System.out.println(sb.toString());
+        System.out.println(sb);
     }
 }

@@ -9,6 +9,7 @@ public class Main {
     static boolean[] visit;
     static int N;
     static int M;
+    static int cnt = 0;
     static StringBuilder sb = new StringBuilder();
 
     static void input() throws IOException {
@@ -22,7 +23,7 @@ public class Main {
     }
 
     static void dfs(int depth, int start) {
-        if (depth == M) {
+        if(depth == M) {
             for(int num : nums) {
                 sb.append(num).append(" ");
             }
@@ -31,7 +32,8 @@ public class Main {
         }
 
         for(int i = start; i < N; i++) {
-            if(visit[i]) continue;
+            if(visit[i])
+                continue;
 
             visit[i] = true;
             nums[depth] = i + 1;
