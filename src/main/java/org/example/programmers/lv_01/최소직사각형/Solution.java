@@ -6,7 +6,6 @@ public class Solution {
      * 가로길이 보다 작은 것
      */
     public int solution(int[][] sizes) {
-        int answer = 0;
         int row = Integer.MIN_VALUE;
         int height = Integer.MIN_VALUE;
 

@@ -4,30 +4,48 @@ import java.util.Scanner;
 
 public class Main {
     static String A, B;
+    static int ans; // 차이
+    static char [] alphas = new char[26];
 
     static void input() {
         Scanner sc = new Scanner(System.in);
         A = sc.next();
         B = sc.next();
-    }
-    // A와 B의 길이가 같으면서, A와 B의 차이를 최소가 되도록 했을 때, 그 차이를 출력하시오.
-    // 최소 차이를 만드는 것이기 때문에 결국에는 같은 문자를 넣어주면 되는 것임
-    // 따라서 추가 연산은 고민할거리가 아니라 우리는 최소 차이를 찾아내면 됨
-    void solve() {
-        int ans = A.length();
 
-        for(int i = 0; i < B.length() - A.length() ; i++) {
-            int cnt = 0;
-            for(int j = 0; j < A.length() ; j++) {
-                if (A.charAt(j) != B.charAt(i + j)) cnt++;
-            }
-            ans = Math.min(ans, cnt);
+        for(int i = 0; i < 26; i++) alphas[i] = (char) (i + 97);
+    }
+
+    static int diff(String a) {
+        int cnt = 0;
+        for(int i = 0; i < a.length(); i++) {
+            if (a.charAt(i) != B.charAt(i)) cnt++;
         }
 
-        System.out.println(ans);
+        return cnt;
+    }
+
+    static void recursive(String a) {
+        if(a.length() == B.length()) {
+            // 차이구하기
+            if (ans == 0) {
+                ans = diff(a);
+            } else {
+                ans = Math.min(ans, diff(a));
+            }
+            return;
+        }
+
+        if(a.length() > B.length()) return;
+
+        for(int i = 0; i < 25; i++) {
+            recursive(alphas[i] + a);
+            recursive(a + alphas[i]);
+        }
     }
 
     public static void main(String[] args) {
         input();
+        recursive(A);
+        System.out.println(ans);
     }
 }

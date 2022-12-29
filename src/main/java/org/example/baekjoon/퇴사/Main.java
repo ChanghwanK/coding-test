@@ -1,56 +1,43 @@
 package org.example.baekjoon.퇴사;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Scanner;
 
 public class Main {
     static int N;
-    static List<String> strs = new ArrayList<>();
-    static int answer = 0;
+    static int [] t;
+    static int [] p;
+    static int ans;
 
     static void input() throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        Scanner sc = new Scanner(System.in);
+        N = sc.nextInt();
 
-        N = Integer.parseInt(br.readLine());
+        t = new int[N + 1];
+        p = new int[N + 1];
 
-        for(int i = 0; i < N; i++) {
-            strs.add(br.readLine());
+        for(int i = 1; i <= N; i++) {
+            t[i] = sc.nextInt();
+            p[i] = sc.nextInt();
         }
     }
 
-    // 구하고자 하는 것 최대 수익
-    static void solve(int day) {
-        System.out.println("day: " + day);
-        if (day > N) {
+    static void solve(int day, int sum) {
+        if(day == N + 1) {
+            ans = Math.max(ans, sum);
             return;
         }
 
-        int startIndex = day;
-        int sum = 0;
-        int currentHavedDay = N;
+        if(day > N + 1) return;
 
-        // 선택
-        // 선택 가능한 조건은
-        while(startIndex < strs.size()) {
-            String[] s1 = strs.get(startIndex).split(" ");
-            int t = Integer.parseInt(s1[0]);
-            if(t < currentHavedDay) {
-                sum += Integer.parseInt(s1[1]);
-                startIndex += t;
-                currentHavedDay -= t;
-            }
-        }
+        solve(day, sum);
+        solve(day + t[day], sum + p[day]);
 
-        answer = Math.max(sum, answer);
-        solve(day + 1);
     }
 
     public static void main(String[] args) throws IOException {
         input();
-        solve(0);
-        System.out.println(answer);
+        solve(1, 0);
+        System.out.println(ans);
     }
 }
