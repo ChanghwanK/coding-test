@@ -24,9 +24,9 @@ public class Solution {
         if(!comb.equals(""))
             numberSet.add(Integer.parseInt(comb));
 
-        for(int i = 0; i < others.length(); i++) {
+        for(int i = 0; i < others.length(); i++)
             recursive(comb + others.charAt(i), others.substring(0, i) + others.substring(i + 1));
-        }
+
     }
 
     public int solution(String numbers) {

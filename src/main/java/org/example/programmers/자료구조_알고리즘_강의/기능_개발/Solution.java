@@ -24,7 +24,6 @@ public class Solution {
         int releaseCnt = 1;
         while(!queue.isEmpty()) {
             int n = queue.poll();
-
             if(d >= n) {
                 releaseCnt++;
                 continue;
