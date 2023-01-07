@@ -32,7 +32,6 @@ public class Main {
 
         solve(day, sum);
         solve(day + t[day], sum + p[day]);
-
     }
 
     public static void main(String[] args) throws IOException {

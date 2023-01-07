@@ -1,30 +1,51 @@
 package org.example.baekjoon.차량_번호판_1;
 
 import java.util.Scanner;
+import java.util.Stack;
 
 public class Main3 {
-    static String inputValue;
+    public static void main(String[] args) {
+        // 입력
+        Scanner sc = new Scanner(System.in);
+        String commands = sc.next();
+        Stack<Character> processed =  new Stack<>();
+        int ans = 1;
+        int numberCnt = 10;
+        int wordCnt = 26;
 
-    static int recursive(int idx, char last) {
-        if (idx == inputValue.length()) return 1;
+        for(int i = 0; i < commands.length(); i++) {
+            char curCommand = commands.charAt(i);
+            // processed가 비엇다면 로직 진행
+            if(! processed.isEmpty()) {
+                char prev = processed.peek();
+                if(curCommand == 'c') {
+                    if(prev == curCommand) {
+                        wordCnt--;
+                    } else {
+                        wordCnt = 26;
+                    }
+                    ans *= wordCnt;
+                }
 
-        char start = inputValue.charAt(idx) == 'c' ? 'a' : '0';
-
-        char end = inputValue.charAt(idx) == 'c' ? 'z' : '9';
-        int ans = 0;
-        for (char i = start; i <= end; i++) {
-            if (i != last)
-                ans += recursive(idx + 1, i);
+                if(curCommand == 'd') {
+                    if(prev == curCommand) {
+                        numberCnt--;
+                    } else {
+                        numberCnt = 10;
+                    }
+                    ans *= numberCnt;
+                }
+                processed.push(curCommand);
+            }
+            // 비엇다면 최초는 push
+            else {
+                if(curCommand == 'c') ans *= wordCnt;
+                if(curCommand == 'd') ans *= numberCnt;
+                processed.push(curCommand);
+            }
         }
 
-        return ans;
+        // 출력
+        System.out.println("result: " + ans);
     }
-
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        inputValue = sc.next();
-
-        recursive(0, ' ');
-    }
-
 }

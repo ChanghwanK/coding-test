@@ -26,7 +26,6 @@ public class Main {
     }
 
     static void dfs(int depth) {
-
         if (depth == M) {
             for(int i = 0; i < nums.length; i++) {
                 sb.append(nums[i]).append(" ");

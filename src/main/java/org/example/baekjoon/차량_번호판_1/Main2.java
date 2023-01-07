@@ -10,9 +10,12 @@ public class Main2 {
 
         char start = input.charAt(idx) == 'c' ? 'a' : '0';
         char end = input.charAt(idx) == 'c' ? 'z' : '9';
-
         int ans = 0;
-        for(char i = start; i <= end; i++) if (i != prev) ans += recursive(idx + 1, i);
+
+        for(char i = start; i <= end; i++) {
+            if(i != prev) ans += recursive(idx + 1, i);
+        }
+
         return ans;
     }
 
