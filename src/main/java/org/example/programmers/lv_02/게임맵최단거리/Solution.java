@@ -17,8 +17,8 @@ public class Solution {
         // 방문 여부 체크
         if(maps[x][y] == 1) {
             maps[x][y] = 0;
-            dfs(x + 1, y, cnt + 1, maps);
             dfs(x, y+1, cnt + 1, maps);
+            dfs(x + 1, y, cnt + 1, maps);
             dfs(x-1,y, cnt + 1, maps);
             dfs(x,y-1, cnt + 1, maps);
         };
