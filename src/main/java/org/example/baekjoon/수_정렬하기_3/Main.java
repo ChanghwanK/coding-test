@@ -19,11 +19,12 @@ public class Main {
 
         Arrays.sort(nums);
 
-        for(int a : nums) {
-            sb.append(a).append('\n');
-        }
-        System.out.println(sb);
+        Arrays.stream(nums)
+            .forEach(System.out::println);
     }
 }
+
+
+
 
 

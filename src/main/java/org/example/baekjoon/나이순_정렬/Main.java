@@ -1,6 +1,5 @@
 package org.example.baekjoon.나이순_정렬;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Scanner;
@@ -39,3 +38,4 @@ public class Main {
             System.out.println(info[0] + " " + info[1]);
     }
 }
+
