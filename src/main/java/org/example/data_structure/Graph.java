@@ -20,11 +20,9 @@ public class Graph {
         public boolean isVisited() {
             return this.visited;
         }
-
         public void visit() {
             this.visited = true;
         }
-
         public void link(Node node) {
             this.links.add(node);
         }
