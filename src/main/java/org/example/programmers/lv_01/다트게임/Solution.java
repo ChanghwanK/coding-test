@@ -5,13 +5,9 @@ import java.util.Map;
 import java.util.Stack;
 
 public class Solution {
-    static class Turn {
-        String result;
-        public Turn(String result) {this.result = result;}
-    }
 
     public int solution(String dartResults) {
-        int answer = 0;
+        int answer;
         Stack<Integer> scores = new Stack<>();
 
         Map<Character, Integer> area = new HashMap<>();
