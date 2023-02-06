@@ -25,7 +25,6 @@ public class Main {
             selected[depth] = values[i];
             comb(depth + 1, i + 1);
         }
-
     }
 
     public static void main(String[] args) {
