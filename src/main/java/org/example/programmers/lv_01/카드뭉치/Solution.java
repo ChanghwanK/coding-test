@@ -23,7 +23,7 @@ public class Solution {
         }
 
         if(cardOneBundle.equals(cardOneQueue) && cardTwoBundle.equals(cardTwoQueue) && (cardOneQueue.size() + cardTwoQueue.size() == goal.length)) {
-            answer = "Yes";
+            answer = "YES";
         }
 
         return answer;
