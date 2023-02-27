@@ -32,8 +32,6 @@ public class Solution {
     public static void main(String [] args) {
         Solution solution = new Solution();
         var result = solution.solution(new String[]{"i", "want", "drink"}, new String[]{"to", "water"}, new String[]{"i", "want", "to", "drink", "water"});
-//        var result = solution.solution(new String[]{"i", "drink", "water" }, new String[]{"want", "to" }, new String[]{"i", "want", "to", "drink", "water"});
-//        var result = solution.solution(new String[]{"i", "drink", "water"}, new String[]{"No"}, new String[]{"i", "drink", "water"});
         System.out.println("result: " + result);
     }
 }
