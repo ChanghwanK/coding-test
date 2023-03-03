@@ -8,10 +8,10 @@ import java.util.Map;
 import java.util.Stack;
 
 public class Solution {
+
     // 각 단어별 인덱스를 관리해야하지 않을까?
     // 원하는 것은 2번째 나올 경우 전에 나온 인덱스에서 몇번째 뒤에 나왔는지를 알아야함
     // index 하나만 할 경우 각 문자열별로 계산을 할 수 없음
-
     public int[] solution(String s) {
         List<Integer> answer = new ArrayList<>();
         Stack<String> stack = new Stack<>();
