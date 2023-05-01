@@ -12,34 +12,38 @@ public class Solution2 {
         Map<String, Integer> xMap = new HashMap<>();
         Map<String, Integer> yMap = new HashMap<>();
 
-        for(String key : X.split("")) {
+        for (String key : X.split("")) {
             xMap.put(key, xMap.getOrDefault(key,0) + 1);
         }
 
-        for(String key : Y.split("") ) {
+        for (String key : Y.split("") ) {
             yMap.put(key, yMap.getOrDefault(key, 0) + 1);
         }
 
-        System.out.println("xMap: " + xMap);
-        System.out.println("yMap: " + yMap);
-
         List<String> arr = new ArrayList<>();
 
-        for(String xKey : xMap.keySet()) {
-            if(! yMap.containsKey(xKey)) continue;
+        for (String xKey : xMap.keySet()) {
+            if(! yMap.containsKey(xKey))
+                continue;
 
-            System.out.println("xKey: "+ xKey); // 공통으로 있는 X키
-            System.out.println(Math.min(xMap.get(xKey), yMap.get(xKey)));
-            int range = Math.min(xMap.get(xKey), yMap.get(xKey)); // 공통으로 등장한 것을 찾는 것이기 때문에 min 값을 찾음
-            for(int i = 0; i < range; i++) {
+            int range = Math.min(xMap.get(xKey), yMap.get(xKey)); //
+            // 공통으로 등장한 것을 찾는 것이기 때문에 min 값을 찾음
+            System.out.println("cnt" + range);
+            for (int i = 0; i < range; i++) {
                 arr.add(xKey);
             }
         }
 
-        String result = arr.stream().sorted(Collections.reverseOrder()).collect(Collectors.joining());
+        System.out.println(arr);
 
-        if(result.isEmpty()) return "-1";
-        if(result.replaceAll("0", "").isEmpty()) return "0";
+        String result = arr.stream().sorted(Collections.reverseOrder())
+            .collect(Collectors.joining());
+
+        if (result.isEmpty())
+            return "-1";
+
+        if (result.replaceAll("0", "").isEmpty())
+            return "0";
         return result;
     }
 
