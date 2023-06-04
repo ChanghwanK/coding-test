@@ -15,6 +15,7 @@ public class Solution {
         // 종료 조건
         int xCnt = 1;
         int otherCnt = 0;
+
         String x = queue.poll();
         while(! queue.isEmpty()) {
             if(Objects.equals(x, queue.poll())) {

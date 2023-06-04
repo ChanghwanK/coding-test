@@ -36,7 +36,8 @@ public class Solution2 {
 
         System.out.println(arr);
 
-        String result = arr.stream().sorted(Collections.reverseOrder())
+        String result = arr.stream()
+            .sorted(Collections.reverseOrder())
             .collect(Collectors.joining());
 
         if (result.isEmpty())
@@ -44,6 +45,7 @@ public class Solution2 {
 
         if (result.replaceAll("0", "").isEmpty())
             return "0";
+
         return result;
     }
 
